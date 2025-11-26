@@ -1,0 +1,22 @@
+# Rust build artifacts
+/target
+/migration/target
+
+# Debug files
+**/*.rs.bk
+*.pdb
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

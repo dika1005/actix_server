@@ -1,0 +1,22 @@
+[package]
+name = "migration"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "migration"
+path = "src/lib.rs"
+
+[dependencies]
+# Kita pakai Tokio (biar sama dengan Actix)
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+# Konfigurasi SeaORM Migration yang Benar
+# Pastikan version SAMA dengan sea-orm di root Cargo.toml kamu (0.12)
+[dependencies.sea-orm-migration]
+version = "1.1"
+features = [
+    "sqlx-mysql",               # Driver MySQL (Wajib!)
+    "runtime-tokio-native-tls"  # Runtime Tokio (Wajib!)
+]
