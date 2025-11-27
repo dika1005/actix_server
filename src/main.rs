@@ -1,5 +1,6 @@
 mod config;
 mod entity;
+mod dtos;
 mod handlers;
 mod routes;
 

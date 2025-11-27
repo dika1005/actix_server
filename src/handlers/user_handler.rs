@@ -1,32 +1,11 @@
 use actix_web::{web, HttpResponse, Responder};
 use sea_orm::*;
-use serde::{Deserialize, Serialize};
 use crate::entity::user;
+use crate::dtos::user_dto::{CreateUserRequest, UserResponse, ErrorResponse};
 
 // AppState untuk menyimpan database connection
 pub struct AppState {
     pub db: DatabaseConnection,
-}
-
-// Request struct untuk create user
-#[derive(Deserialize)]
-pub struct CreateUserRequest {
-    pub name: String,
-    pub email: String,
-}
-
-// Response struct untuk user yang berhasil dibuat
-#[derive(Serialize)]
-pub struct UserResponse {
-    pub id: i32,
-    pub username: String,
-    pub email: String,
-}
-
-// Response struct untuk error
-#[derive(Serialize)]
-pub struct ErrorResponse {
-    pub error: String,
 }
 
 // Handler Create User
