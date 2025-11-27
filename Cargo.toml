@@ -10,8 +10,14 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 dotenvy = "0.15"
 tokio = { version = "1", features = ["full"] }
+futures-util = "0.3"
 
 async-std = { version = "1", features = ["attributes", "tokio1"] }
 
-# INI KUNCINYA: Harus sqlx-mysql
+# SeaORM
 sea-orm = { version = "1.1", features = [ "sqlx-mysql", "runtime-tokio-native-tls", "macros" ] }
+
+# Authentication & Security
+jsonwebtoken = "9"
+bcrypt = "0.15"
+chrono = { version = "0.4", features = ["serde"] }

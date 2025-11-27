@@ -3,11 +3,13 @@ mod entity;
 mod dtos;
 mod handlers;
 mod routes;
+mod utils;
+mod middleware;
 
 use actix_web::{web, App, HttpServer};
 use dotenvy::dotenv;
 use std::env;
-use handlers::user_handler::AppState; // Pastikan struct AppState di-public di handler
+use handlers::user_handler::AppState;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

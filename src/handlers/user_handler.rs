@@ -31,6 +31,10 @@ pub async fn create_user(
         id: NotSet,
         username: Set(req_body.name.trim().to_string()),
         email: Set(req_body.email.trim().to_lowercase()),
+        password_hash: Set(String::new()), // Empty for now, auth endpoints will handle this
+        role: Set("user".to_string()),
+        created_at: NotSet,
+        updated_at: NotSet,
     };
 
     // Insert ke database

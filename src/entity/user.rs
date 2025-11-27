@@ -8,6 +8,10 @@ pub struct Model {
     pub id: i32,
     pub username: String,
     pub email: String,
+    pub password_hash: String,
+    pub role: String,
+    pub created_at: Option<DateTimeUtc>,
+    pub updated_at: Option<DateTimeUtc>,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
