@@ -43,7 +43,7 @@ where
     forward_ready!(service);
 
     fn call(&self, req: ServiceRequest) -> Self::Future {
-        // Extract token from Authorization header
+        // Extract token from Authorization header or cookie
         let token = req
             .headers()
             .get("Authorization")
@@ -54,6 +54,11 @@ where
                 } else {
                     None
                 }
+            })
+            .or_else(|| {
+                // Fallback: cek cookie jika header tidak ada
+                req.cookie("access_token")
+                    .map(|c| c.value().to_string())
             });
 
         match token {
@@ -100,6 +105,7 @@ pub mod extract {
     use crate::utils::jwt::Claims;
     use crate::dtos::common_dto::ApiResponse;
 
+    #[allow(dead_code)]
     pub fn get_claims(req: &HttpRequest) -> Result<Claims, HttpResponse> {
         req.extensions()
             .get::<Claims>()
@@ -110,6 +116,7 @@ pub mod extract {
             })
     }
 
+    #[allow(dead_code)]
     pub fn require_admin(req: &HttpRequest) -> Result<Claims, HttpResponse> {
         let claims = get_claims(req)?;
         

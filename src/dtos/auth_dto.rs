@@ -15,10 +15,19 @@ pub struct LoginRequest {
     pub password: String,
 }
 
-// Response setelah berhasil register/login
+// Response setelah berhasil register (tanpa token)
 #[derive(Serialize)]
-pub struct AuthResponse {
-    pub token: String,
+pub struct RegisterResponse {
+    pub user: UserInfo,
+}
+
+// Response setelah berhasil login (dengan access & refresh token)
+#[derive(Serialize)]
+pub struct LoginResponse {
+    pub access_token: String,
+    pub refresh_token: String,
+    pub token_type: String,
+    pub expires_in: i64,
     pub user: UserInfo,
 }
 
